@@ -9,7 +9,7 @@
         <form action="index.php" method="post">
             <section>
                 <h4 align="center">
-                	Escribe el codigo del producto que deseas ver <input type="text" name="code_found" value="<?php $code_found ?>">
+                	Escribe el codigo del producto que deseas ver <input type="text" name="code_found">
                 	<input type="submit" name="btn_Env" value="Solicitar">
                 </h4>
             </section>
@@ -21,17 +21,15 @@ error_reporting(0);
 		$select = "SELECT * from product where code='$code_found';";
 		$ejec=mysqli_query($connect, $select); 
 		while($res=mysqli_fetch_array($ejec)) {
-			$code = $res['code'];
 			echo'<table align="center">
 					<tr class="top"> <th colspan="2"> Datos del Producto</th></tr>
-					<tr class="res"> <th align="right">Codigo:</th> <td><input type="text" name="code_edit" value="'.$code.'"> </td> </tr>
+					<tr class="res"> <th align="right">Codigo:</th> <td><input type="text" name="code_edit" value="'.$res['code'].'"> </td> </tr>
 					<tr class="res"> <th align="right">Nombre:</th> <td><input type="text" name="des" value="'.$res["des"].'"> </td> </tr>
 					<tr class="res"> <th align="right">Precio:</th> <td><input type="text" name="price" value="'.$res["price"].'"> </td> </tr>
 					<tr class="res"> <th align="right">Stock Actual:</th> <td><input type="text" name="stock_act" value="'.$res["stock_act"].'"> </td> </tr>
 					<tr class="res"> <th align="right">Stock Minimo:</th> <td><input type="text" name="stock_min" value="'.$res["stock_min"].'"> </td> </tr>
 					<tr> <th colspan="2" class="fot"> <input type="reset"> <input type="submit" name="btn_Act" value="Actualizar"> </th></tr>
-				</table>
-			';
+				</table>';
 		}
 	}else
 	if (isset($_POST['btn_Act'])) {
@@ -53,7 +51,6 @@ error_reporting(0);
             <p align="center">
                 ©2021 Cristopher Sic | Todos los derechos reservados
             </p>
-            <br>
         </form>
     </body>
     <style>
@@ -61,8 +58,6 @@ error_reporting(0);
     		margin-top: -20px;
     	}img{
     		border: #F08080 dotted; height: 320px;
-    	}input{
-    		text-decoration: none; 
     	}p{
     		font-size: small;
     	}tr.top{
@@ -71,8 +66,6 @@ error_reporting(0);
     		border-top: groove;
     	}tr.res:hover{
     		background-color: gray;
-    	}a:hover{
-    		background-color: #6a6464;
     	}
     </style>
 </html>
