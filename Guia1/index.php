@@ -9,35 +9,45 @@
         <form action="index.php" method="post">
             <section>
                 <h4 align="center">
-                	Escribe el codigo del producto que deseas ver <input class="box_code" type="text" name="code_found" placeholder="P000">
+                	Escribe el codigo del producto que deseas ver <input type="text" name="code_found" value="<?php $code_found ?>">
                 	<input type="submit" name="btn_Env" value="Solicitar">
                 </h4>
             </section>
 <?php 
 error_reporting(0);
 	$connect = mysqli_connect('localhost', 'root', '', 'guia1');
+	$code_found = $_POST['code_found'];
 	if(isset($_POST['btn_Env'])){
-		$code_found = $_POST['code_found'];
-		$obj = "select * from product 
-								where code=".$code_found.";";
-		$ejec=mysqli_query($obj, $connect); 
-	/*while($res=mysqli_fetch_array($ejec)){
-		echo "<script>
-        alert('Se han solicitado Ambas Tablas');
-    </script>";
-	}
-		while($res=mysqli_fetch_array($ejec)) {*/
+		$select = "SELECT * from product where code='$code_found';";
+		$ejec=mysqli_query($connect, $select); 
+		while($res=mysqli_fetch_array($ejec)) {
+			$code = $res['code'];
 			echo'<table align="center">
-				<tr class="top"> <th colspan="2"> Datos del Producto </th></tr>
-				<tr class="res"> <th align="right">Codigo:</th> <td><input type="text" value="'.$res['code'].'"> </td> </tr>
-				<tr class="res"> <th align="right">Nombre:</th> <td><input type="text" value="'.$res["des"].'"> </td> </tr>
-				<tr class="res"> <th align="right">Precio:</th> <td><input type="text" value="'.$res["price"].'"> </td> </tr>
-				<tr class="res"> <th align="right">Stock Actual:</th> <td><input type="text" value="'.$res["stock_act"].'"> </td> </tr>
-				<tr class="res"> <th align="right">Stock Minimo:</th> <td><input type="text" value="'.$res["stock_min"].'"> </td> </tr>*/
-				<tr> <th colspan="2" class="fot"> <input type="reset"> <input type="submit" value="Actualizar"> </th></tr>
-			</table>';
-		
-		mysqli_close($connect);
+					<tr class="top"> <th colspan="2"> Datos del Producto</th></tr>
+					<tr class="res"> <th align="right">Codigo:</th> <td><input type="text" name="code_edit" value="'.$code.'"> </td> </tr>
+					<tr class="res"> <th align="right">Nombre:</th> <td><input type="text" name="des" value="'.$res["des"].'"> </td> </tr>
+					<tr class="res"> <th align="right">Precio:</th> <td><input type="text" name="price" value="'.$res["price"].'"> </td> </tr>
+					<tr class="res"> <th align="right">Stock Actual:</th> <td><input type="text" name="stock_act" value="'.$res["stock_act"].'"> </td> </tr>
+					<tr class="res"> <th align="right">Stock Minimo:</th> <td><input type="text" name="stock_min" value="'.$res["stock_min"].'"> </td> </tr>
+					<tr> <th colspan="2" class="fot"> <input type="reset"> <input type="submit" name="btn_Act" value="Actualizar"> </th></tr>
+				</table>
+			';
+		}
+	}else
+	if (isset($_POST['btn_Act'])) {
+		$code_edit = $_POST['code_edit'];
+		$des = $_POST['des'];
+		$price = $_POST['price'];
+		$stock_act = $_POST['stock_act'];
+		$stock_min = $_POST['stock_min'];
+
+		$update = "UPDATE product set des = '$des', price='$price', stock_act='$stock_act', stock_min='$stock_min' where code = '$code_edit';";
+		$ej = mysqli_query($connect, $update);
+		if ($ej) {
+			echo "<script> alert('Se ha actualizado el producto ".$des."   [".$code_edit."]'); location.href='../Guia1'; </script>";
+		}else{
+			echo "<script> alert('Se produjo un ERROR. Porfavor intentalo mas tarde'); </script>";
+		}
 	}
 ?>
             <p align="center">
@@ -61,6 +71,8 @@ error_reporting(0);
     		border-top: groove;
     	}tr.res:hover{
     		background-color: gray;
+    	}a:hover{
+    		background-color: #6a6464;
     	}
     </style>
 </html>
