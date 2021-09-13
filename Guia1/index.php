@@ -4,7 +4,7 @@
     </head>
     <body>
         <header>
-            <h1 align="center">Modificacion de un Producto<br><img src="../Img's/fruits.png"></h1>
+            <h1 align="center">Modificacion de un Producto<br><img src="../Imgs/fruits.png"></h1>
         </header>
         <form action="index.php" method="post">
             <section>
