@@ -28,7 +28,14 @@ error_reporting(0);
 					<tr class="res"> <th align="right">Precio:</th> <td><input type="text" name="price" value="'.$res["price"].'"> </td> </tr>
 					<tr class="res"> <th align="right">Stock Actual:</th> <td><input type="text" name="stock_act" value="'.$res["stock_act"].'"> </td> </tr>
 					<tr class="res"> <th align="right">Stock Minimo:</th> <td><input type="text" name="stock_min" value="'.$res["stock_min"].'"> </td> </tr>
-					<tr> <th colspan="2" class="fot"> <input type="reset"> <input type="submit" name="btn_Act" value="Actualizar"> </th></tr>
+					<tr class="res">
+						<th  align="center"> Imagen: </th>
+						<td colspan="2" align="center"> <strong>Actual:</strong> [ <a href="../Imgs/Guia3/'.$res["code"].'.png"> Click Here </a> ]
+						<br> <input type="file" accept="image/*"> </td>
+					</tr>
+					<tr> <th colspan="2" class="fot"> <input type="reset">
+						&nbsp; <input type="submit" href=".." value="Cancelar"> &nbsp;
+						<input type="submit" name="btn_Act" value="Actualizar"> </th></tr>
 				</table>';
 		}
 	}else
@@ -50,6 +57,7 @@ error_reporting(0);
 ?>
             <p align="center">
                 ©2021 Cristopher Sic | Todos los derechos reservados
+                <br> <a href="..">Back</a>
             </p>
         </form>
     </body>

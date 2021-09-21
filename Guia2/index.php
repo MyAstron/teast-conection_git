@@ -42,15 +42,11 @@ error_reporting(0);
 					<th> Stock Minimo: </th><td> <input type="text" value="'.$res["stock_min"].'"> </td>
 				</tr>
 				<tr>
-					<th class="fot" colspan="2"> &nbsp; </th>
-				</tr>
-				<tr>
-					<td>
+					<th align="center" colspan="2" class="fot">
 						<input type="submit" name="btn_Act" value="Modificar">
-					</td>
-					<td>
+						&nbsp; <input type="submit" href=".." value="Cancelar"> &nbsp;
 						<input type="submit" name="btn_Del" value="Elminar">
-					</td>
+					</th>
 				</tr>
 			</table>';
 		}
@@ -70,6 +66,7 @@ error_reporting(0);
 ?>
             <p align="center">
                 ©2021 Cristopher Sic | Todos los derechos reservados
+                <br> <a href="..">Back</a>
             </p>
         </form>
     </body>
