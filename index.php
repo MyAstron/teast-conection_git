@@ -16,6 +16,7 @@
                 		<option value="Guia2">Guia 2</option>
                 		<option value="Guia3">Guia 3</option>
                 		<option value="Guia4">Guia 4</option>
+                		<option value="Examen">Examen</option>
                 	</select>
                 	<input type="submit" name="btn_Env" value="Visualizar">
                 </h4>
@@ -39,6 +40,9 @@
 				break;
 			case 'Guia4':
 					echo '<script> location.href="./Guia4"; </script>';
+				break;
+			case 'Examen':
+					echo '<script> location.href="./Examen"; </script>';
 				break;
 		}
 	}
