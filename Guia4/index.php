@@ -75,7 +75,7 @@ $pdf->SetTextColor(0,0,0);
 while($res=mysqli_fetch_array($ejec)){
     $pdf->Cell(20,10,utf8_decode(''),0,0);
 
-    // Mostramos los datos segun la columna de la tabla
+    // Mostramos los datos segun la columna de la tabla de la Base de Datos (MySQL)
     $pdf->Cell(30,10,utf8_decode($res["code"]),0,0, 'C');
     $pdf->Cell(90,10,utf8_decode($res["des"]),0,0, 'L');
     $pdf->Cell(5,10,utf8_decode('Q.'),0,0);
