@@ -4,7 +4,7 @@
     </head>
     <body>
         <header>
-            <h1 align="center">Mostrar Datos Con Img's</h1>
+            <h1 align="center">Tabla Producto</h1>
         </header>
         <form action="index.php" method="post">
 <?php 
@@ -39,7 +39,7 @@ error_reporting(0);
 			</tr>
 		</table>';
 	if(isset($_POST['btn_PDF'])){
-		echo '<script> location.href="../Guia4" </script>';
+		echo '<script> location.href="pdf.php" </script>';
 	}
 ?>
             <p align="center">
